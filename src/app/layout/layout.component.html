@@ -1,0 +1,45 @@
+@if(layout()) {
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="layout()?.handset ? 'dialog' : 'navigation'"
+    [mode]="layout()?.handset ? 'over' : 'side'"
+    [opened]="layout()?.handset === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard"         #link="routerLinkActive"
+      routerLinkActive
+      [activated]="link.isActive">Dashboard</a>
+      @for (station of stationInfoList; track station) {
+      <a
+        mat-list-item
+        [routerLink]="['/station', station.stationId]"
+        #link="routerLinkActive"
+        routerLinkActive
+        [activated]="link.isActive"
+        >{{ station.location }}</a
+      >
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (layout()?.handset) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+      <h4 class="mat-h4 project-title">wms-pwa <span>by DigitalKMPS</span></h4>
+    </mat-toolbar>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+}

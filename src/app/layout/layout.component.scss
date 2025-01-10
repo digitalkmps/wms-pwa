@@ -1,0 +1,27 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-sidenav-content {
+  background: var(--mat-sys-surface);
+}
+.mat-mdc-nav-list a.mat-mdc-list-item {
+  border-radius: 0;
+}
+.project-title {
+  margin: 0 0 0 0.2rem;
+}

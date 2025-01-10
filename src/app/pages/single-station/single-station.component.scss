@@ -1,0 +1,23 @@
+app-station-card {
+  width: 100%;
+  margin: 2rem;
+}
+
+.mat-h1 {
+  margin-left: 2rem;
+}
+.example-image {
+  padding: 2rem;
+
+  .example-placeholder {
+    margin: 0 auto;
+    font-size: 3.5rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+}

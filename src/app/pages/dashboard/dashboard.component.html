@@ -1,0 +1,12 @@
+@if(this.layout()) {
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="3" rowHeight="25rem">
+    @for (card of cards(); track card) {
+    <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
+      <app-station-card [stationId]="card.stationId" [mode]="'dashboard'"></app-station-card>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+</div>
+}
