@@ -1,0 +1,43 @@
+@if(this.stationData()) {
+<mat-card  [ngClass]="{'dashboard-card': mode() === 'dashboard', 'single-card': mode() === 'none'}">
+  @if(stationData().stationId > 0) {
+      <mat-card-header>
+    <mat-card-title>
+      {{ this.stationData().stationId }}
+      <button
+        mat-icon-button
+        class="more-button"
+        [matMenuTriggerFor]="menu"
+        aria-label="Toggle menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>Expand</button>
+        <button mat-menu-item>Remove</button>
+      </mat-menu>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <h2 class="mat-h2">{{ stationData().location }}</h2>
+      <p>{{ stationData().description }}</p>
+      <p>last check: {{ stationData().eventTime | date : "medium" }}</p>
+      <mat-list>
+        <mat-list-item>temperature: {{ stationData().temperature }} <span>&#8451;</span></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>humidity: {{ stationData().humidity }} <span>%</span></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>water level: {{ stationData().distance | number : "1.2-2" }} <span>cm</span></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>day or night: {{ stationData().light ? "day" : "night" }}</mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
+  } @else {
+    <mat-card-content class="loader-container">
+      <mat-spinner></mat-spinner>
+    </mat-card-content>
+  }
+</mat-card>
+}
